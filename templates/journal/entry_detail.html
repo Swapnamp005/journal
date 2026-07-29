@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ entry.title }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2rem; line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <h1>{{ entry.title }}</h1>
+    <p>{{ entry.content }}</p>
+    <p><small>{{ entry.created_at }}</small></p>
+    <a href="{% url 'journal:entry_list' %}">Back to journal</a>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Personal Journal</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2rem; line-height: 1.6; }
+        .card { border: 1px solid #ddd; padding: 1rem; margin-bottom: 1rem; border-radius: 8px; }
+        a { color: #2563eb; text-decoration: none; }
+        .btn { display: inline-block; margin-top: 1rem; padding: 0.6rem 1rem; background: #2563eb; color: white; border-radius: 6px; }
+    </style>
+</head>
+<body>
+    <h1>My Personal Journal</h1>
+    <a class="btn" href="{% url 'journal:entry_create' %}">Write a new entry</a>
+
+    {% for entry in entries %}
+        <div class="card">
+            <h2><a href="{% url 'journal:entry_detail' entry.pk %}">{{ entry.title }}</a></h2>
+            <p>{{ entry.content }}</p>
+            <small>{{ entry.created_at }}</small>
+        </div>
+    {% empty %}
+        <p>No entries yet. Start writing your first journal note.</p>
+    {% endfor %}
+</body>
+</html>
